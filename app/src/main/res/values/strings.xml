@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">DataVerifyValidate</string>
+    <string-array name="depts">
+        <item>Choose any</item>
+        <item>Design</item>
+        <item>Marketing</item>
+        <item>Sales</item>
+        <item>Technology</item>
+    </string-array>
+    <string-array name="roless">
+        <item>Choose any</item>
+        <item>Assistant Director</item>
+        <item>Associate</item>
+        <item>Developer</item>
+        <item>Directory</item>
+        <item>Manager</item>
+        <item>Team Lead</item>
+    </string-array>
+</resources>
