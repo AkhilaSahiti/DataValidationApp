@@ -13,15 +13,30 @@ public class validationsuccess extends AppCompatActivity {
         setContentView(R.layout.activity_validationsuccess);
 
         Bundle b =getIntent().getExtras();
-        TextView name = (TextView) findViewById(R.id.personname);
-        TextView department = (TextView) findViewById(R.id.persondepartment);
-        TextView role = (TextView) findViewById(R.id.personrole);
-        TextView salary = (TextView) findViewById(R.id.salary);
+        Intent intent = getIntent();
 
-        name.setText(b.getCharSequence("personname"));
-        department.setText(b.getCharSequence("persondepartment"));
-        role.setText(b.getCharSequence("personrole"));
-        salary.setText(b.getCharSequence("salary"));
+        String empname = intent.getStringExtra("urname");
+        TextView name = (TextView) findViewById(R.id.personname);
+        name.setText(empname);
+
+        /*int empsal = getIntent().getExtras().getInt("ursal");
+        int empsal = getIntent().getIntExtra("ursal",0);
+        TextView salary = (TextView) findViewById(R.id.salary);
+        salary.setText(empsal);*/
+
+
+
+        TextView department = (TextView) findViewById(R.id.persondepartment);
+        //TextView role = (TextView) findViewById(R.id.personrole);
+
+        //int empsal = intent.getIntExtra("ursal",0);
+        // int empsal = b.getInt("ursal",0);
+
+
+        department.setText(b.getCharSequence("urdept"));
+
+        //role.setText(b.getCharSequence("personrole"));
+
 
     }
 }
