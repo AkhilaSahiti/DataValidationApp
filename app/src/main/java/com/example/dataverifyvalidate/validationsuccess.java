@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
+
 public class validationsuccess extends AppCompatActivity {
 
     @Override
@@ -12,31 +16,25 @@ public class validationsuccess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_validationsuccess);
 
-        Bundle b =getIntent().getExtras();
         Intent intent = getIntent();
 
         String empname = intent.getStringExtra("urname");
         TextView name = (TextView) findViewById(R.id.personname);
         name.setText(empname);
 
-        /*int empsal = getIntent().getExtras().getInt("ursal");
-        int empsal = getIntent().getIntExtra("ursal",0);
-        TextView salary = (TextView) findViewById(R.id.salary);
-        salary.setText(empsal);*/
+        String empsal = intent.getStringExtra("ursal");
+        TextView salary = (TextView) findViewById(R.id.personsalary);
+        salary.setText(empsal);
 
 
-
+        String urdept = intent.getStringExtra("urdept");
         TextView department = (TextView) findViewById(R.id.persondepartment);
-        //TextView role = (TextView) findViewById(R.id.personrole);
-
-        //int empsal = intent.getIntExtra("ursal",0);
-        // int empsal = b.getInt("ursal",0);
+        department.setText(urdept);
 
 
-        department.setText(b.getCharSequence("urdept"));
-
-        //role.setText(b.getCharSequence("personrole"));
-
+        String urrole = intent.getStringExtra("urrole");
+        TextView role = (TextView) findViewById(R.id.personrole);
+        role.setText(urrole);
 
     }
 }

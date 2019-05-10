@@ -1,26 +1,25 @@
 package com.example.dataverifyvalidate;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    int currentitem1=0;
-    int currentitem2=0;
-    private EditText entername,sal;
-    private String vname, vdept, vrole, vsal;
-    Spinner dept,roles;
+    Spinner dept, roles;
     Button dispbtn;
+    private EditText entername, sal;
+    private double salary;
+    private String vname, vdept, vrole, vsal, currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,98 +40,74 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(checkDataEntered()){
+                if (checkDataEntered()) {
                     aftervalidation();
-                }
-                else{
+                } else {
                     checkDataEntered();
                 }
             }
         });
 
     }
+
+    public boolean checkDataEntered() {
+        boolean valid = true;
+
+        vname = entername.getText().toString();
+        vdept = dept.getSelectedItem().toString().trim();
+        vrole = roles.getSelectedItem().toString().trim();
+        vsal = sal.getText().toString();
+
+
+        if (vname.length() < 3 || vname.isEmpty()) {
+            Toast toast = Toast.makeText(this, "Name should contain atleast 3 letters!", Toast.LENGTH_SHORT);
+            toast.show();
+            valid = false;
+        } else if (vdept.equalsIgnoreCase("Choose any") || vdept.isEmpty()) {
+            Toast toast = Toast.makeText(this, "Choose any Department!", Toast.LENGTH_SHORT);
+            toast.show();
+            valid = false;
+        } else if (vrole.equalsIgnoreCase("Choose any") || vrole.isEmpty()) {
+            Toast toast = Toast.makeText(this, "Choose any one Role!", Toast.LENGTH_SHORT);
+            toast.show();
+            valid = false;
+        } else {
+            if (vsal.isEmpty()) {
+                Toast toast = Toast.makeText(this, "Enter valid amount!", Toast.LENGTH_SHORT);
+                toast.show();
+                valid = false;
+            } else {
+                salary = Double.parseDouble(vsal);
+                if (salary < 20000 || salary > 25000 || salary == 0) {
+                    Toast toast = Toast.makeText(this, "Enter valid amount!", Toast.LENGTH_SHORT);
+                    toast.show();
+                    valid = false;
+                } else {
+                    Locale locale = Locale.US;
+                    Currency currencyx = Currency.getInstance(locale);
+                    String getSymbol = currencyx.getSymbol(locale);
+                    currency = NumberFormat.getInstance(Locale.US).format(salary).concat(getSymbol);
+                }
+            }
+        }
+        return valid;
+    }
+
+
     public void aftervalidation() {
         Intent intent = new Intent(getApplicationContext(), validationsuccess.class);
         intent.setType("text/plain");
         intent.putExtra("urname", entername.getText().toString());
-        /*int ursal=Integer.valueOf(vsal);
-        vsal = sal.getText().toString().trim();
-        int vsall=Integer.parseInt(vsal);
-        intent.putExtra("ursal",vsall);*/
+        intent.putExtra("urdept", dept.getSelectedItem().toString());
+        intent.putExtra("urrole", roles.getSelectedItem().toString());
+        intent.putExtra("ursal", currency);
         startActivity(intent);
-        spinnervalidation();
+
+
     }
 
-    public void spinnervalidation(){
-        dept.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(currentitem1==position){
-                    return;
-                }
-                else{
-                    String urdept =dept.getSelectedItem().toString();
-                    Intent intent= new Intent(MainActivity.this,validationsuccess.class);
-                    intent.putExtra("urdept",urdept);
-                    startActivity(intent);
-                }
-            }
 
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        /*roles.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(currentitem2==position){
-                    return;
-                }
-                else{
-
-                    Intent intent= new Intent(MainActivity.this,validationsuccess.class);
-                    startActivity(intent);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
-    }
-
-    public boolean checkDataEntered(){
-        boolean valid = true;
-
-        vname = entername.getText().toString().trim();
-        vdept = dept.getSelectedItem().toString().trim();
-        vrole = roles.getSelectedItem().toString().trim();
-        vsal = sal.getText().toString().trim();
-
-        if (vname.length()<3|| vname.isEmpty()) {
-            Toast toast = Toast.makeText(this, "Name should contain atleast 3 letters!", Toast.LENGTH_SHORT);
-            toast.show();
-            valid = false;
-        }
-        if (vdept.equalsIgnoreCase("Choose any")) {
-            Toast toast = Toast.makeText(this, "Choose any Department!", Toast.LENGTH_SHORT);
-            toast.show();
-            valid = false;
-        }
-        if (vrole.equalsIgnoreCase("Choose any")) {
-            Toast toast = Toast.makeText(this, "Choose any one Role!", Toast.LENGTH_SHORT);
-            toast.show();
-            valid = false;
-        }
-        if (Integer.valueOf(vsal) < 20000 || Integer.valueOf(vsal) > 25000) {
-            Toast toast = Toast.makeText(this, "Enter valid amount!", Toast.LENGTH_SHORT);
-            toast.show();
-            valid = false;
-        }
-        return valid;
-    }
 }
+
+
+
