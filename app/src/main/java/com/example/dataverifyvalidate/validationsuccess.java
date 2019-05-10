@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -44,26 +45,28 @@ public class validationsuccess extends AppCompatActivity {
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendemail();
+                onemail();
+            }
+        });
+        Button sms = (Button) findViewById(R.id.sms);
+        sms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onsms();
             }
         });
     }
-    protected void sendemail(){
+    protected void onemail(){
 
-        Intent eintent = new Intent(Intent.ACTION_VIEW);
+        Intent mailintent = new Intent(Intent.ACTION_SEND);
+        mailintent.setData(Uri.parse("mailto:"));
+        startActivity(mailintent);
 
-        eintent.setData(Uri.parse("mailto:"));
-        eintent.setType("text/plain");
-        eintent.putExtra(Intent.EXTRA_SUBJECT,"subject");
-        eintent.putExtra(Intent.EXTRA_TEXT,"message");
-
-
-        try {
-            startActivity(eintent.createChooser(eintent, "Send mail..."));
-            finish();
-        }catch (android.content.ActivityNotFoundException  ex){
-            Toast.makeText(validationsuccess.this, "No email client installed", Toast.LENGTH_SHORT).show();
-        }
+    }
+    protected void onsms(){
+        Intent smsintent = new Intent(Intent.ACTION_SEND);
+        smsintent.setData(Uri.parse("sms:"));
+        startActivity(smsintent);
 
     }
 

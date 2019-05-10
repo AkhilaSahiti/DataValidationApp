@@ -91,9 +91,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:hint="send"
-        android:text="email"
-        android:onClick="onemail"/>
+        android:text="email" />
 
+    <Button
+        android:id="@+id/sms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="send"
+        android:text="sms" />
 
 
 </GridLayout>
