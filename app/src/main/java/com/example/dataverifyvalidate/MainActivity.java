@@ -25,15 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    public void onDisplay(View view) {
-
-        entername = (EditText) findViewById(R.id.enter_name);
-        dept = (Spinner) findViewById(R.id.dept);
-        roles = (Spinner) findViewById(R.id.roles);
-        sal = (EditText) findViewById(R.id.sal);
-
 
         dispbtn = (Button) findViewById(R.id.display);
         dispbtn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        entername = (EditText) findViewById(R.id.enter_name);
+        dept = (Spinner) findViewById(R.id.dept);
+        roles = (Spinner) findViewById(R.id.roles);
+        sal = (EditText) findViewById(R.id.sal);
 
     }
 
@@ -78,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 valid = false;
             } else {
                 salary = Double.parseDouble(vsal);
-                if (salary < 20000 || salary > 25000 || salary == 0) {
+                if (salary < 2000 || salary > 25000 || salary == 0) {
                     Toast toast = Toast.makeText(this, "Enter valid amount!", Toast.LENGTH_SHORT);
                     toast.show();
                     valid = false;
@@ -95,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void aftervalidation() {
-        Intent intent = new Intent(getApplicationContext(), validationsuccess.class);
+        Intent intent = new Intent(getApplicationContext(), ValidationSuccess.class);
         intent.setType("text/plain");
         intent.putExtra("urname", entername.getText().toString());
         intent.putExtra("urdept", dept.getSelectedItem().toString());

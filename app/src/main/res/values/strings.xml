@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">DataVerifyValidate</string>
+    <string name="employee_data_entry">Employee Data Entry</string>
+    <string name="name">Name:</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="department">Department:</string>
+    <string name="role">Role:</string>
+    <string name="salary">Salary($):</string>
+    <string name="enter_your_salary">Enter your salary</string>
+    <string name="button_display">Display</string>
+    <string name="emplyee_data_display">Emplyee_Data_Display</string>
+    <string name="button_email">email</string>
+    <string name="button_sms">sms</string>
+    <string name="smsbody">%1$s joined the  %2$s department as %3$s with a monthly salary for %4$s.</string>
     <string-array name="depts">
         <item>Choose any</item>
         <item>Design</item>

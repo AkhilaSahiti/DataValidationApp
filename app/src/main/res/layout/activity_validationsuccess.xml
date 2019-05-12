@@ -1,105 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/vertical_margin"
-    android:paddingBottom="@dimen/vertical_margin"
-    android:paddingLeft="@dimen/horizon_margin"
-    android:paddingRight="@dimen/horizon_margin"
-    android:columnCount="2"
-    tools:context=".validationsuccess">
+    android:orientation="vertical">
 
     <TextView
-    android:id="@+id/name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_row="0"
-    android:layout_column="0"
-    android:text="Name:" />
-
-    <TextView
-        android:id="@+id/personname"
+        android:id="@+id/employee_data_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="0"
-        android:layout_column="1"
-        android:layout_gravity="fill_horizontal"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/department"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
         android:layout_column="0"
-        android:text="Department:"/>
-
-    <TextView
-        android:id="@+id/persondepartment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="1"
-        android:layout_gravity="fill_horizontal"
-        android:textStyle="bold" />
-
-
-
-    <TextView
-        android:id="@+id/role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:text="Role:"/>
-
-    <TextView
-        android:id="@+id/personrole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_column="1"
-        android:layout_gravity="fill_horizontal"
-        android:textStyle="bold" />
-
-
-
-    <TextView
-        android:id="@+id/salary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:text="Salary($):"/>
-
-    <TextView
-        android:id="@+id/personsalary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="1"
-        android:layout_gravity="fill_horizontal"
-        android:inputType="number"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="send"
-        android:text="email" />
+        android:padding="16dp"
+        android:text="Employee Data Display"
+        android:textSize="25dp"
+        android:textColor="@android:color/black" />
 
-    <Button
-        android:id="@+id/sms"
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:paddingLeft="@dimen/horizon_margin"
+        android:paddingTop="@dimen/vertical_margin"
+        android:paddingRight="@dimen/horizon_margin"
+        android:paddingBottom="@dimen/vertical_margin"
+        tools:context=".ValidationSuccess">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:padding="16dp"
+            android:text="@string/name"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/personname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="fill_horizontal"
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:padding="16dp"
+            android:text="@string/department"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/persondepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_gravity="fill_horizontal"
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:padding="16dp"
+            android:text="@string/role"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/personrole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_gravity="fill_horizontal"
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/salary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:padding="16dp"
+            android:text="@string/salary"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/personsalary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_gravity="fill_horizontal"
+            android:inputType="number"
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
+    </GridLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:hint="send"
-        android:text="sms" />
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
+        <Button
+            android:id="@+id/email"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/back"
+            android:hint="send"
+            android:padding="16dp"
+            android:text="email"
+            android:textColor="@android:color/black" />
 
-</GridLayout>
+        <Button
+            android:id="@+id/sms"
+
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/back"
+            android:hint="send"
+            android:padding="16dp"
+            android:text="sms"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+</LinearLayout>
